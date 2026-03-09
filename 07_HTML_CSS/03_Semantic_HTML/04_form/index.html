@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding School Registration</title>
+  </head>
+
+  <body>
+    <header>
+
+      <h1>Come to the Coding School</h1>
+      <p>
+        Fill in that form to start your coding journey!
+      </p>
+    </header>
+
+    <!-- Don't use the marquee element, or the bgcolor attribute, they are both deprecated, this was just for fun  -->
+    <marquee bgcolor="chucknorris">
+      <form action="">
+
+        <!-- Personal info about user -->
+        <fieldset>
+          <legend>Personal Info</legend>
+
+          <div>
+            <label for="firstname">First name:
+            </label>
+            <input type="text" name="firstname" id="firstname" placeholder="Anna" autocomplete="given-name" required>
+          </div>
+
+          <div>
+            <label for="lastname">Last name:
+            </label>
+            <input type="text" name="lastname" id="lastname" placeholder="Doe" autocomplete="family-name" required>
+          </div>
+
+          <div>
+            <label for="email">Email:
+            </label>
+            <input type="email" name="email" id="email" placeholder="anna.doe@mail.com" autocomplete="email" required>
+          </div>
+
+          <div>
+            <label for="phone">Phone:
+            </label>
+            <input type="tel" name="phone" id="phone" placeholder="1234-56789" autocomplete=" tel" required>
+          </div>
+
+        </fieldset>
+
+        <!-- Address info -->
+        <fieldset>
+          <legend>Address Info</legend>
+
+
+          <div>
+            <label for="address">Street and Houseno:
+            </label>
+            <input type="text" name="address" id="address" placeholder="Berliner Str. 1" autocomplete="street-address"
+              required> <span>*</span>
+          </div>
+
+          <div>
+            <label for="zip">Zip No.:
+            </label>
+            <input type="text" name="zip" id="zip" placeholder="12345" autocomplete="postal-code" required
+              aria-describedby="zip-description">
+            <small id="zip-description">Your postal code</small>
+          </div>
+
+          <div>
+            <label for="city">City:
+            </label>
+            <input type="text" name="city" id="city" placeholder="Munich" autocomplete="address-level2" required>
+          </div>
+
+        </fieldset>
+
+        <!-- Info about course -->
+
+        <fieldset>
+          <legend>Select your Course</legend>
+
+          <div>
+            <label for="course">Courses</label>
+            <select name="course" id="course" required>
+              <option value="" disabled selected>-- select an option --</option>
+              <option value="se">Software Engineering</option>
+              <option value="ui">UI/UX Design</option>
+              <option value="or">Origami</option>
+              <option value="da">Data Analytics</option>
+            </select>
+          </div>
+
+          <p>Which editor do you want to use in the Course?</p>
+
+          <input type="radio" name="editor" id="vs-code" value="vs-code">
+          <label for="vs-code">VS Code</label>
+
+          <input type="radio" name="editor" id="nvim" value="nvim">
+          <label for="nvim">nvim</label>
+
+          <input type="radio" name="editor" id="zed" value="zed">
+          <label for="zed">Zed</label>
+        </fieldset>
+
+
+        <!-- Terms & stuff -->
+        <div>
+          <input type="checkbox" name="terms" id="terms" required>
+          <label for="terms">I accept the <a href="terms.html">Terms & Conditions</a></label>
+        </div>
+
+        <div>
+          <input type="checkbox" name="newsletter" id="newsletter">
+          <label for="newsletter">I really want the newletter!</label>
+        </div>
+
+        <div>
+
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+          <button type="button">YOLO</button>
+
+        </div>
+
+
+      </form>
+
+
+
+    </marquee>
+
+    <footer>
+      <small>&copy; 2025 Coding School. Alle Rechte vorbehalten.</small>
+    </footer>
+    <marquee>
+      <small>&copy; 2025 Coding School. Alle Rechte vorbehalten.</small>
+    </marquee>
+  </body>
+
+</html>
