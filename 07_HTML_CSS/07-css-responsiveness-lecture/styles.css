@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 16px; /* default value */
+}
+
+body {
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	border: 3px solid blue;
+}
+
+h1 {
+	font-size: 3rem;
+}
+#hero {
+	background-color: aqua;
+	height: 33vh;
+}
+
+#about {
+	border: solid 2px red;
+}
+
+#about p {
+	border: solid 2px green;
+	width: 75%;
+}
+
+/* section h2 {
+	font-size: 2.5rem;
+} */
+section {
+	padding: 10px 0px;
+	h2 {
+		font-size: 2.5rem;
+	}
+}
+
+.mobile {
+	display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 600px) {
+	/* CSS rules for extra small screens */
+	html {
+		font-size: 12px;
+	}
+	.mobile {
+		display: block;
+	}
+
+	.desktop {
+		display: none;
+	}
+}
