@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Time Travel Agency</title>
+		<!-- <link rel="stylesheet" href="styles.css" /> -->
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<style type="text/tailwindcss">
+			@layer base {
+				img {
+					@apply w-full h-full rounded-lg;
+				}
+			}
+
+			@layer components {
+				.btn {
+					@apply bg-indigo-600 px-4 py-3 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded-md hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 active:scale-95;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="flex justify-around bg-[#123456] text-white p-5">
+			<h1>Time Travel Agency</h1>
+			<nav>
+				<a class="hover:underline" href="#services">Services</a>
+				<a class="hover:underline" href="#gallery">Gallery</a>
+				<a class="hover:underline" href="#contact">Contact</a>
+			</nav>
+		</header>
+
+		<main class="p-5">
+			<section id="services">
+				<h2 class="text-2xl mb-4">Our Services</h2>
+				<div class="flex justify-around flex-col sm:flex-row">
+					<div class="bg-[#f4f4f4] m-3 p-6 text-center">
+						<h3 class="text-xl font-bold mb-4">Past Travels</h3>
+						<p>Experience the dinosaurs or witness ancient Rome.</p>
+						<button class="btn bg-[#123456]">See our offers</button>
+					</div>
+					<div class="bg-[#f4f4f4] m-3 p-6 text-center">
+						<h3 class="text-xl font-bold mb-4">Future Exploration</h3>
+						<p>See the future of Earth or explore life on Mars.</p>
+					</div>
+				</div>
+			</section>
+			<section id="gallery">
+				<h2 class="text-2xl mb-4">Travel Destinations</h2>
+				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+					<img
+						src="https://picsum.photos/200/300?random=1"
+						alt="Random Image 1"
+					/>
+					<img
+						src="https://picsum.photos/200/300?random=2"
+						alt="Random Image 2"
+					/>
+					<img
+						src="https://picsum.photos/200/300?random=3"
+						alt="Random Image 3"
+					/>
+					<img
+						src="https://picsum.photos/200/300?random=4"
+						alt="Random Image 4"
+					/>
+					<img
+						src="https://picsum.photos/200/300?random=5"
+						alt="Random Image 5"
+					/>
+					<img
+						src="https://picsum.photos/200/300?random=6"
+						alt="Random Image 6"
+					/>
+				</div>
+			</section>
+		</main>
+
+		<footer class="flex justify-around bg-[#123456] text-white p-5">
+			<p>© 2026 Time Travel Agency</p>
+			<nav>
+				<a href="#">Privacy</a>
+				<a href="#">Terms</a>
+			</nav>
+		</footer>
+	</body>
+</html>
