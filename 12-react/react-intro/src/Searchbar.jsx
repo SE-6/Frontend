@@ -1,7 +1,7 @@
-export default function Searchbar() {
+export default function Searchbar({ infoToPassDown }) {
   return (
     <>
-      <input type="search" name="" id="" />
+      <input type="search" name="" id="" defaultValue={infoToPassDown} />
     </>
   );
 }

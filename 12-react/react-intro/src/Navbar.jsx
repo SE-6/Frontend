@@ -1,10 +1,10 @@
 import Searchbar from "./Searchbar";
 
-function Navbar() {
+function Navbar({ infoToPassDown }) {
   return (
     <div>
       <h1>I am the navbar</h1>
-      <Searchbar />
+      <Searchbar infoToPassDown={infoToPassDown} />
     </div>
   );
 }
