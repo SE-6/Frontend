@@ -1,4 +1,12 @@
-function CharacterCard({ name, charClass, health, mana, level }) {
+function CharacterCard({
+  name,
+  charClass,
+  health,
+  mana,
+  level,
+  onKick,
+  onLevelUp,
+}) {
   const healthBarStyle = {
     width: `${health}%`,
     maxWidth: "100%",
@@ -10,9 +18,9 @@ function CharacterCard({ name, charClass, health, mana, level }) {
   // pattern 1: Early return, if there's no name, don't render anything
   if (!name) return null;
 
-  const clickHandler = () => {
-    console.log(`Selected: ${name} the ${charClass} (Level ${level})`);
-  };
+  // const clickHandler = () => {
+  //   console.log(`Selected: ${name} the ${charClass} (Level ${level})`);
+  // };
 
   const handleClick = (event) => {
     console.log(event.target);
@@ -32,6 +40,22 @@ function CharacterCard({ name, charClass, health, mana, level }) {
       {/* pattern 3: ternary operator */}
       {mana > 0 ? <p>Mana: {mana}</p> : <p>No magic left</p>}
       <div style={healthBarStyle}></div>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onLevelUp();
+        }}
+      >
+        Level Up
+      </button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onKick();
+        }}
+      >
+        Kick
+      </button>
     </div>
   );
 }
