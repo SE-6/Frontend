@@ -1,7 +1,8 @@
 import CharacterCard from "./CharacterCard";
 import Navbar from "./Navbar";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { RotateLoader } from "react-spinners";
 
 export default function App() {
   const [groupGold, setGroupGold] = useState(100);
@@ -13,28 +14,39 @@ export default function App() {
   const [newClass, setNewClass] = useState("");
   const [newLevel, setNewLevel] = useState("");
 
-  const [characters, setCharacters] = useState([
-    {
-      id: 1,
-      name: "Moritz",
-      charClass: "Mage",
-      level: 12,
-      health: 80,
-      mana: 0,
-    },
-    {
-      id: 2,
-      name: "Conan",
-      charClass: "Mage",
-      level: 12,
-      health: 90,
-      mana: 50,
-    },
-  ]);
+  const [advice, setAdvice] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [seconds, setSeconds] = useState(0);
+
+  const [characters, setCharacters] = useState(() => {
+    const saved = localStorage.getItem("characters");
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return [
+      {
+        id: 1,
+        name: "Moritz",
+        charClass: "Mage",
+        level: 12,
+        health: 80,
+        mana: 0,
+      },
+      {
+        id: 2,
+        name: "Conan",
+        charClass: "Mage",
+        level: 12,
+        health: 90,
+        mana: 50,
+      },
+    ];
+  });
 
   const addGold = () => {
     setGroupGold(groupGold + 50); // when you're done executing this scope, re-render the whole component
-    console.log(groupGold);
+    // console.log(groupGold);
   };
 
   const kickCharacter = (id) => {
@@ -68,13 +80,64 @@ export default function App() {
     setNewLevel(1);
   };
 
-  // const defaultValue = "ships";
+  // -------------- useEffect PATTERN 1 - No dependency array ----------------
+
+  // useEffect(() => {
+  //   console.log("App rendered");
+  // });
+
+  // ------------ useEffect PATTERN 2 - With empty dependency array -----------
+
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/todos/1")
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }, []); // Empty array -> execute ONCE on component mount
+
+  // ------------ useEffect PATTERN 3 - Array with dependencies -----------
+
+  // useEffect(() => {
+  //   console.log("Gold amount changed! New value: ", groupGold);
+  // }, [groupGold, characters.length]);
+
+  // syncing with localStorage
+  useEffect(() => {
+    localStorage.setItem("characters", JSON.stringify(characters));
+  }, [characters]);
+
+  useEffect(() => {
+    fetch("https://api.adviceslip.com/advice")
+      .then((response) => response.json())
+      .then((data) => {
+        setAdvice(data.slip.advice);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch advice: ", error);
+        setAdvice(
+          "Sometime life just gives you lemons. SO go and make a lemonade",
+        );
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div>
       {/* <Navbar infoToPassDown={defaultValue} /> */}
 
       <h1>{groupName}</h1>
+
+      <h3>Page uptime: {seconds}</h3>
+
       <p style={{ display: "inline-block" }}>Group gold: {groupGold}</p>
       <button onClick={addGold}>Add gold</button>
 
@@ -131,6 +194,25 @@ export default function App() {
       </p> */}
 
       {isRecruiting ? <p>Open to new members!</p> : <p>Currently not hiring</p>}
+      <br />
+
+      <div>
+        <h3>
+          {isLoading ? (
+            <RotateLoader
+              color="#ffffff"
+              loading={isLoading}
+              size={50}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          ) : (
+            advice
+          )}
+        </h3>
+      </div>
+
+      <br />
 
       <form onSubmit={submitHandler}>
         <fieldset>
