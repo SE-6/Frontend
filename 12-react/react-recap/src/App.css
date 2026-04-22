@@ -1,0 +1,14 @@
+nav {
+  background-color: #1b193d;
+  padding: 1rem;
+  color: rgba(31, 239, 204, 0.8);
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li:hover {
+  cursor: pointer;
+}
